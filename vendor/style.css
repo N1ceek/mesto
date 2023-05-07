@@ -31,7 +31,7 @@
     align-items: center;
 }
 .profile__avatar {
-    border-radius: 60px;
+    border-radius: 50%;
     width: 120px;
     height: 120px;
     background-image: url(../images/avatar/image.jpg);
@@ -97,21 +97,45 @@
 
 .cards{
     display: grid;
-    grid-template-columns: auto;
+    max-width: 880px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    gap: 17px;
+    margin: 50px 0 0 0;
 }
 .card {
-width: 282px;
-height: 361px;
+    background-color: #fff;
+    border-radius: 2%;
+    width: 282px;
+    height: 361px;
 }
 .card__images {
-
+    object-fit: cover
 }
 .card__item {
-
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 246px;
 }
 .card__name {
-
+    color: #000;
+    font-weight: normal;
+    font-size:24px ;
+    line-height: auto;
 }
 .card__like {
+   color: #000;
+   height: 19px;
+   width: 22px;
+}
 
+.footer {
+display: flex;
+flex-direction: row;
+justify-self: start;
+}
+.footer__copyright {
+    color: #545454;
 }
