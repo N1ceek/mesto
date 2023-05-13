@@ -1,9 +1,7 @@
 .body {
     background-color: black;
     max-width: 1280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 auto 0;
 }
 @media screen and (min-width:320px) and (max-width:1279px){
     .body {
@@ -12,14 +10,14 @@
 }
 .header {
     width: 880px;
-    margin: 45px 0 40px;
+    margin: 45px auto 40px;
     border-bottom: 1px solid #545454;
     padding: 0;
 }
 @media screen and (min-width:320px) and (max-width:1279px){
     .header {
         width: 320px;
-        margin: 28px 0 42px;
+        margin: 28px auto 42px;
         border-bottom: 1px solid #545454;
         padding: 0;
 
@@ -43,6 +41,7 @@
 }
 .content {
     width: 880px;
+    margin:0 auto 0;
 }
 @media screen and (min-width:320px) and (max-width:1279px){
     .content {
@@ -242,5 +241,51 @@
 /* JS */
 
 .popup  {
-
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    margin: auto;
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: opacity .3s, visibility 0s linear;
 }
+.popup__edit {
+    display: none;
+}
+.popup__opened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup__container {
+    padding: 34px 36px 37px 36px;
+    width: 430px;
+    height: 330px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+.popup__close {
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -39px;
+    right: -40px;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    background-color: #000;
+    background-image: url(../images/Close\ Icon.png);
+    background-size: cover;
+}
+.popup__close:hover {
+   opacity: .6px;
+}
+
