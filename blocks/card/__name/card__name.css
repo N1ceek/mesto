@@ -1,0 +1,9 @@
+.card__name {
+	font-family: Inter, Arial, sans-serif;
+	color: #000;
+	font-weight: 900;
+	font-size:24px ;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
