@@ -1,0 +1,12 @@
+.card__like {
+	color: #000;
+	height: 19px;
+	width: 22px;
+}
+ .card__like:hover {
+	color: #000;
+	height: 19px;
+	width: 22px;
+	opacity: .8;
+	cursor: pointer;
+}
