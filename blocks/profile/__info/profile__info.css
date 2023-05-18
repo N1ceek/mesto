@@ -1,6 +1,5 @@
 .profile__info {
 	margin: 0 0 0 30px;
-	max-height: 73px;
 	align-self: center;
 	display: grid;
 	grid-template-columns: 1fr 24px;
