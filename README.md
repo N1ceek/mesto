@@ -12,7 +12,7 @@ Flexbox и Grid layout
 возможность просмотра фотографий
 доступ к своему личному профилю
 **GH-pages**
-* [Ссылка на макет в Figma] (https://n1ceek.github.io/mesto/)
+* [Ссылка] (https://n1ceek.github.io/mesto/)
 
 
 спасибо за внимание!
