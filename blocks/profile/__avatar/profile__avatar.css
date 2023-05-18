@@ -2,7 +2,7 @@
 	border-radius: 50%;
 	width: 120px;
 	height: 120px;
-	background-image: url(../../../../mesto/images/profile/__avatar.jpg);
+	background-image: url(../../../images/profile/__avatar.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
