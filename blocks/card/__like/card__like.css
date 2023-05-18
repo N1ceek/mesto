@@ -1,12 +1,11 @@
 .card__like {
-	color: #000;
+	background-color: rgba(0, 0, 0, 0);
 	height: 19px;
 	width: 22px;
+	cursor: pointer;
+	background-image: url("../../../images/grid/__like.svg");
+	border: none;
 }
  .card__like:hover {
-	color: #000;
-	height: 19px;
-	width: 22px;
-	opacity: .8;
-	cursor: pointer;
+	opacity: .5;
 }
