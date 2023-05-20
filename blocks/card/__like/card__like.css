@@ -5,6 +5,7 @@
 	cursor: pointer;
 	background-image: url("../../../images/grid/__like.svg");
 	border: none;
+	padding: 0;
 }
  .card__like:hover {
 	opacity: .5;
