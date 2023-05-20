@@ -21,6 +21,6 @@
 	}
 }
  .popup__close:hover {
-	opacity: .8;
+	opacity: .6;
 	cursor: pointer;
 }
