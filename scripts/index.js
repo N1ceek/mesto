@@ -15,9 +15,8 @@ let profielWorkplace = document.querySelector(`.profile__workplace`);
 
 function openEdit() {
   popupOpen.classList.add(`popup_opened`)
-  nameInput.textContent = profileName.value
-  
-
+  nameInput.value = profileName.textContent
+  jobInput.value = profielWorkplace.textContent
 };
 function closeEdit() {
   popupOpen.classList.remove(`popup_opened`)

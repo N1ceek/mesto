@@ -8,8 +8,9 @@
 	background-image: url("../../../images/profile/__plus.svg");
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 22px;
 	align-self: center;
-	margin: 0 0 0 auto;
+	margin: 0 0;
 	padding: 0;
 	cursor: pointer;
 }
@@ -20,5 +21,6 @@
 	.profile__add-button {
 		width: 282px;
 		margin: 0;
+		background-size: 16px;
 	}
 }
