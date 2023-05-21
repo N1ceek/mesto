@@ -6,7 +6,7 @@
 	max-width: 246px;
 	margin: 25px auto 30px;
 }
-@media screen and (min-width:320px) and (max-width:1279px){
+@media screen and (max-width:1279px){
 	.card__item {
 		margin: 22px auto 25px;
 	}

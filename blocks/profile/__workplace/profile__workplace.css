@@ -11,7 +11,7 @@
 	overflow: hidden;
 	white-space: nowrap; 
 }
- @media screen and (min-width:320px) and (max-width:1279px){
+@media screen and (max-width:1279px){
 	.profile__workplace{
 		font-size: 14px;
 		line-height: 17px;
