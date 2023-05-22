@@ -23,11 +23,9 @@ function closeEdit() {
 };
 function handleFormSubmit (evt){
   evt.preventDefault();
-  nameInput.value
   profileName.textContent = nameInput.value;
-  jobInput.value
   profielWorkplace.textContent = jobInput.value;
-  popupOpen.classList.remove(`popup_opened`);
+  closeEdit()
 };
 
 

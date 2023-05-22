@@ -2,7 +2,7 @@
 	margin: 0 0 0 30px;
 	align-self: center;
 	display: grid;
-	grid-template-columns: 1fr 24px;
+	grid-template-columns: 300px 24px;
 	grid-column-gap: 18px;
 	grid-row-gap: 16px;
 }
