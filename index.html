@@ -15,19 +15,18 @@
         <section class="profile">
             <div class="profile__avatar"></div>
             <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="Редоктировать" id="editButton"></button>
-                    <p class="profile__workplace">Исследователь океана</p>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button" type="button" aria-label="Редоктировать" id="editButton"></button>
+                <p class="profile__workplace">Исследователь океана</p>
             </div>
             <button class="profile__add-button" type="button" aria-label="Добавить" id="addButton"></button>
         </section>
-        <section class="cards" id="cards">
-        </section>
+        <div class="cards" id="cards"></div>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup" id="edit">
+    <div class="popup" id="edit">
         <div class="popup__container">
             <button class="popup__close" type="button" id="edit_close"></button>
             <form class="form" name="EditFormName" id="FormEdit">
@@ -37,8 +36,8 @@
                 <button class="form__save-button" type="submit">Сохранить</button>
             </form>
         </div>
-    </section> 
-    <section class="popup" id="add">
+    </div> 
+    <div class="popup" id="add">
         <div class="popup__container">
             <button class="popup__close" type="button" id="add_close"></button>
             <form class="form" name="EditFormName" id="formAdd">
@@ -48,11 +47,18 @@
                 <button class="form__save-button" type="submit">Сохранить</button>
             </form>
         </div>
-    </section>
+    </div>
+    <div class="popup__photo" id="popupPhoto">
+        <div class="popup__full">
+            <button class="popup__close" type="button" id="photo_close"></button>
+            <img src="../mesto/images/grid/photo-1555075297-5518b917dd88.avif" alt="" class="popup__photo-images" id="photoImages">
+            <p class="popup__photo-title" id="photoTitle">123123131313</p>
+        </div>
+    </div>
     <template class="template" id="template">
         <div class="card" id="card"> 
-            <img src="" alt="Корзина" class="card__remove" id="cardRemove">
-            <img src="" alt="Домбай" class="card__image" id="cardImage">
+            <button alt="Корзина" class="card__remove" id="cardRemove"></button>
+            <img src="" alt="Фото" class="card__image" id="cardImage">
             <div class="card__item" id="cardItem">
                 <h2 class="card__name" id="cardName">Домбай</h2>
                 <button type="button" class="card__like" id="cardLike"></button>

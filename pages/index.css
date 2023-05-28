@@ -29,3 +29,10 @@
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__save-button/form__save-button.css);
 @import url(../blocks/form/__set/form__set.css);
+@import url(../blocks/card/__like/_activeted/card__like_activeted.css);
+@import url(../blocks/card/__remove/card__remove.css);
+@import url(../blocks/popup/__photo-images/popup__photo-images.css);
+@import url(../blocks/popup/__photo/popup__photo.css);
+@import url(../blocks/popup/__photo-title/popup__photo-title.css);
+@import url(../blocks/popup/__container/popup__full.css);
+@import url(../blocks/popup/__photo/_opened/popup__photo_opened.css);
