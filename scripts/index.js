@@ -25,7 +25,7 @@ function close() {
   add.classList.remove('popup_opened');
 }
 function closePhoto() {
-  photo.classList.remove(`popup__photo_opened`)
+  photo.classList.remove(`popup_opened`)
 }
 function handleFormSubmit (evt){
   evt.preventDefault();
@@ -106,7 +106,7 @@ function createCards(el) {
   const photoTitle = document.getElementById('photoTitle');
   const photoImages = document.getElementById('photoImages');
   initCardImg.addEventListener('click', function (event) {
-    photo.classList.add('popup__photo_opened');
+    photo.classList.add('popup_opened');
     photoImages.src = initCardImg.src;
     photoTitle.textContent = initCardTitle.textContent;
   });
