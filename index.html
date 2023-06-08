@@ -29,21 +29,25 @@
     <div class="popup popup_edit" id="edit">
         <div class="popup__container">
             <button class="popup__close popup__close_edit" type="button" id="edit_close"></button>
-            <form class="form form_edit" name="EditFormName" id="FormEdit">
+            <form class="form form_edit" name="EditFormName" id="FormEdit" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="form__input form__input_type_user-name" name="username" id="username" placeholder="Укажите своё имя" minlength="2" maxlength="40" required="">
-                <input class="form__input form__input_type_about" name="about" id="about" placeholder="Укажите вид деятельности" minlength="2" maxlength="200" required="">
-                <button class="form__save-button" type="submit">Сохранить</button>
+                <input class="form__input form__input_type_user-name" name="input-name" id="input-name" type="text" placeholder="Укажите своё имя" minlength="2" maxlength="40" required="">
+                <span class="form__input_error" id="input-name-error"></span>
+                <input class="form__input form__input_type_about" name="input-about" id="input-about" type="text" placeholder="Укажите вид деятельности" minlength="2" maxlength="200" required="">
+                <span class="form__input_error" id="input-about-error"></span>
+                <button class="form__save-button" type="submit" value="сохранить">Сохранить</button>
             </form>
         </div>
     </div> 
     <div class="popup popup_add" id="add">
         <div class="popup__container">
             <button class="popup__close popup__close_add" type="button" id="add_close"></button>
-            <form class="form form_add" name="EditFormName" id="formAdd">
+            <form class="form form_add" name="EditFormName" id="formAdd" novalidate>
                 <h2 class="popup__title">Новое место</h2>
-                <input class="form__input form__input_type_place" name="place" id="place" placeholder="Название" minlength="2" maxlength="40" required="">
-                <input class="form__input form__input_type_link" name="link" id="link" placeholder="Ссылка на картинку" minlength="2" maxlength="200" required="">
+                <input class="form__input form__input_type_place" name="input-place" id="input-place" type="text" placeholder="Название" minlength="2" maxlength="40" required="">
+                <span class="form__input_error" id="input-place-error"></span>
+                <input class="form__input form__input_type_link" name="input-link" id="input-link" type="url" placeholder="Ссылка на картинку" minlength="2" maxlength="200" required="">
+                <span class="form__input_error" id="input-link-error"></span>
                 <button class="form__save-button" type="submit">Сохранить</button>
             </form>
         </div>
@@ -52,7 +56,7 @@
         <div class="popup__full">
             <button class="popup__close popup__close_photo" type="button" id="photo_close"></button>
             <img alt="" class="popup__photo-images" id="photoImages">
-            <p class="popup__photo-title" id="photoTitle">123123131313</p>
+            <p class="popup__photo-title" id="photoTitle"></p>
         </div>
     </div>
     <template class="template" id="template">
@@ -65,6 +69,7 @@
             </div>
         </div>
     </template>
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/cards.js"></script> 
     <script src="./scripts/index.js"></script>
 </body>

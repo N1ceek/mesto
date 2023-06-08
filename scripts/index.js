@@ -1,11 +1,11 @@
 const popup = document.querySelector(`.popup`);
-const popupOpened = document.querySelector(`.popup_opened`)
+
 const popupEdit = document.querySelector(`.popup_edit`);
 const popupAdd = document.querySelector(`.popup_add`);
 const popupPhoto = document.querySelector(`.popup_photo`);
 const buttonAddOpen = document.querySelector(`.profile__add-button`);
 const buttonEditOpen = document.querySelector(`.profile__edit-button`);
-const buttonClose = document.querySelector(`.popup__close`);
+const buttonClose = document.querySelectorAll(`.popup__close`);
 const buttonCloseEdit = document.querySelector(`.popup__close_edit`);
 const buttonCloseAdd = document.querySelector(`.popup__close_add`);
 const buttonClosePhoto = document.querySelector(`.popup__close_photo`);
@@ -22,12 +22,33 @@ const formPlaceInput = document.querySelector(`.form__input_type_place`);
 const formPlaceUrl = document.querySelector(`.form__input_type_link`);
 const photoTitle = document.querySelector('.popup__photo-title');
 const photoImages = document.querySelector('.popup__photo-images');
+
+//открытие и закрытие попапов
 function openPopup(popup) {
   popup.classList.add(`popup_opened`);
+  document.addEventListener('keydown', closePopupOnEsc);
+  document.addEventListener('mousedown', closePopupOnClick);
 };
 function closePopup(popup) {
   popup.classList.remove(`popup_opened`);
+  document.addEventListener('keydown', closePopupOnEsc);
+  document.addEventListener('mousedown', closePopupOnClick);
 };
+const closePopupOnEsc = evt => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
+const closePopupOnClick = evt => {
+  const evtTarget = evt.target;
+  if (evtTarget.classList.contains('popup')) {
+    closePopup(evtTarget);
+  }
+};
+
+
+
 function handleFormSubmit (evt){
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -68,13 +89,17 @@ formCard.addEventListener('submit', function (evt) {
   closePopup(popupAdd)
 });
 buttonCloseEdit.addEventListener('click', function () {
-  closePopup(popupEdit)});
+  closePopup(popupEdit)
+});
 buttonCloseAdd.addEventListener('click', function () { 
-  closePopup(popupAdd)});
+  closePopup(popupAdd)
+});
 buttonClosePhoto.addEventListener('click', function () { 
-  closePopup(popupPhoto)});
+  closePopup(popupPhoto)
+});
 buttonAddOpen.addEventListener('click', function () { 
-  openPopup(popupAdd) });
+  openPopup(popupAdd)
+});
 buttonEditOpen.addEventListener('click', () => {
   openPopup(popupEdit);
   nameInput.value = profileName.textContent;
