@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Место</title>
+</head>
+<body class="body">
+    <header class="header">
+        <div class="header__logo"></div>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <div class="profile__avatar"></div>
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button" type="button" aria-label="Редоктировать" id="editButton"></button>
+                <p class="profile__workplace">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button" type="button" aria-label="Добавить" id="addButton"></button>
+        </section>
+        <div class="cards" id="cards"></div>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_edit" id="edit">
+        <div class="popup__container">
+            <button class="popup__close popup__close_edit" type="button" id="edit_close"></button>
+            <form class="form form_edit" name="EditFormName" id="FormEdit" novalidate>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="form__input form__input_type_user-name" name="input-name" id="input-name" type="text" placeholder="Укажите своё имя" minlength="2" maxlength="40" required>
+                <span class="form__input_snap_error" id="input-name-error"></span>
+                <input class="form__input form__input_type_about" name="input-about" id="input-about" type="text" placeholder="Укажите вид деятельности" minlength="2" maxlength="200" required>
+                <span class="form__input_snap_error" id="input-about-error"></span>
+                <button class="form__save-button" type="submit" value="сохранить">Сохранить</button>
+            </form>
+        </div>
+    </div> 
+    <div class="popup popup_add" id="add">
+        <div class="popup__container">
+            <button class="popup__close popup__close_add" type="button" id="add_close"></button>
+            <form class="form form_add" name="EditFormName" id="formAdd" novalidate>
+                <h2 class="popup__title">Новое место</h2>
+                <input class="form__input form__input_type_place" name="input-place" id="input-place" type="text" placeholder="Название" minlength="2" maxlength="40" required>
+                <span class="form__input_snap_error" id="input-place-error"></span>
+                <input class="form__input form__input_type_link" name="input-link" id="input-link" type="url" placeholder="Ссылка на картинку" minlength="2" maxlength="200" required>
+                <span class="form__input_snap_error" id="input-link-error"></span>
+                <button class="form__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_photo" id="popupPhoto">
+        <div class="popup__full">
+            <button class="popup__close popup__close_photo" type="button" id="photo_close"></button>
+            <img alt="" class="popup__photo-images" id="photoImages">
+            <p class="popup__photo-title" id="photoTitle"></p>
+        </div>
+    </div>
+    <template class="template" id="template">
+        <div class="card" id="card"> 
+            <button alt="Корзина" class="card__remove" id="cardRemove"></button>
+            <img alt="Фото" class="card__image" id="cardImage">
+            <div class="card__item" id="cardItem">
+                <h2 class="card__name" id="cardName">Домбай</h2>
+                <button type="button" class="card__like" id="cardLike"></button>
+            </div>
+        </div>
+    </template>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/cards.js"></script> 
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
