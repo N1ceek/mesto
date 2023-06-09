@@ -1,0 +1,10 @@
+.form__input_snap_error {
+    min-height: 30px;
+    width: 358px;
+    margin: 5px 0 0 0;
+}
+@media screen and (max-width:1279px){
+	.form__input_snap_error {
+		width: 238px;
+	}
+}
