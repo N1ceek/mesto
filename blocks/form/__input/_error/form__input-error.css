@@ -4,12 +4,11 @@
     font-size: 12px;
     line-height: 15px;
     color: #f00;
-    min-height: 25px;
-    margin: 5px 0 0 0;
+    min-height: 30px;
     width: 358px;
     }
 @media screen and (max-width:1279px){
-    .form__input_error {
+    .form__input-error {
             width: 238px;
     }
 }

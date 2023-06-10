@@ -38,7 +38,6 @@ const handleFormSubmitEdit = (evt) => {
 const handleFormSubmitAdd = (evt) => {
     evt.preventDefault();
     closePopup(popupAdd);
-    disableSubmitButton();
 }
 function handleFormSubmit (evt){
     evt.preventDefault();
@@ -95,7 +94,6 @@ function createCards(el) {
     cards.prepend(newCards);
   });
   formElementEdit.addEventListener('submit', handleFormSubmitEdit);
-  formElementEdit.addEventListener(`submit`, handleFormSubmit);
   formElementAdd.addEventListener('submit', function (evt) {
     evt.preventDefault();
     const newCard = createCards({ name: titleInput.value, link: linkInput.value });
@@ -105,13 +103,9 @@ function createCards(el) {
   buttonOpenEditPopup.addEventListener('click', function () {
     cleanValidationMessage(popupEdit);
     preloadEditPopup();
-    enableSubmitButton();
     openPopup(popupEdit);
   });
   buttonOpenAddPopup.addEventListener('click', function () {
     cleanValidationMessage(popupAdd);
-    disableSubmitButton();
     openPopup(popupAdd);
   });
-  
-formElementAdd.addEventListener('submit', handleFormSubmitAdd);

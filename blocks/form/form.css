@@ -3,12 +3,9 @@
 	height: 260px;
 	display: flex;
 	flex-direction: column;
-	
-	
   }
-  
   @media screen and (max-width: 1279px) {
 	.form {
-	  width: 282px;
+	  width: 238px;
 	}
   }
