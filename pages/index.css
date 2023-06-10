@@ -36,6 +36,4 @@
 @import url(../blocks/popup/__full/popup__full.css);
 @import url(../blocks/form/__input/_error-text/form__input_error-text.css);
 @import url(../blocks/form/__save-button/_disabled/form__save-button_disabled.css);
-@import url(../blocks/form/__input/_error/form__input_error.css);
-@import url(../blocks/form/__input/__input_snap_error/form__input_snap_error.css);
-
+@import url(../blocks/form/__input/_error/form__input-error.css);
