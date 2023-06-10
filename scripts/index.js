@@ -1,4 +1,3 @@
-// POPUP EDIT/ADD
 const formElementEdit = document.querySelector('.form__edit');
 const formElementAdd = document.querySelector('.form__add');
 const buttonOpenEditPopup = document.querySelector('.profile__edit-button');

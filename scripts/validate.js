@@ -16,10 +16,6 @@ const cleanValidationMessage = (popup) => {
     input.classList.remove('form__input_error-text');
   });
 };
-// const clearSpan = (popup) => {
-//   const snap = popup.querySelectorAll('.form__input-error')
-//   snap.textContent = '';
-// }
 const showInputError = (formSelector, inputSelector) => {
   const errorElement = formSelector.querySelector(`#${inputSelector.id}-error`);
   errorElement.textContent = inputSelector.validationMessage;
