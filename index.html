@@ -26,29 +26,29 @@
             <footer class="footer">
                 <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
             </footer>
-            <div class="popup popup__edit">
+            <div class="popup popup_type_edit">
                 <div class="popup__container">
                     <button class="popup__close" aria-label="Закрыть" type="button"></button>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="form form__edit" name="edit-profile" novalidate>
+                    <form class="form form_type_edit" name="edit-profile" novalidate>
                         <input class="form__input form__input_value_name" id="name" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
                         <div id="name-error" class="form__input-error"></div>
                         <input class="form__input form__input_value_about" id="about" type="text" placeholder="О себе" name="about" minlength="2" maxlength="200" required>
                         <div id="about-error" class="form__input-error" ></div>
-                        <button class="form__save-button form__button_edit" type="submit">Сохранить</button>
+                        <button class="form__save-button form_button_edit" type="submit">Сохранить</button>
                     </form>
                 </div>
             </div>
-            <div class="popup popup__add">
+            <div class="popup popup_type_add">
                 <div class="popup__container">
                     <button class="popup__close" aria-label="Закрыть" type="button"></button>
                     <h2 class="popup__title">Новое место</h2>
-                    <form class="form form__add" name="add-profile" novalidate>
+                    <form class="form form_type_add" name="add-profile" novalidate>
                         <input class="form__input form__input_value_title" id="title" type="text" placeholder="Название" name="title" minlength="2" maxlength="30" required>
                         <span id="title-error" class="form__input-error" ></span>
                         <input class="form__input form__input_value_link" id="link" type="url" placeholder="Ссылка на картинку" name="link" required>
                         <span id="link-error" class="form__input-error" ></span>
-                        <button class="form__save-button form__button_add" type="submit">Создать</button>
+                        <button class="form__save-button form_button_add" type="submit">Создать</button>
                     </form>
                 </div>
             </div>
