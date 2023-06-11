@@ -22,7 +22,6 @@ const cards = document.querySelector('.cards');
 const closePopup = (popup) => {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupByEsc);
-    formElementAdd.reset();
 };
 const closePopupByEsc = (evt) => {
     if (evt.key === 'Escape') {
@@ -108,4 +107,5 @@ function createCards(el) {
   buttonOpenAddPopup.addEventListener('click', function () {
     cleanValidationMessage(popupAdd);
     openPopup(popupAdd);
+    formElementAdd.reset();
   });
