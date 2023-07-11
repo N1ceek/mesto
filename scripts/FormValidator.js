@@ -2,6 +2,10 @@ export default class FormValidator {
   constructor(validationConfig, formElement) {
     this._validationConfig = validationConfig;
     this._formElement = formElement;
+    this._submitButton = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
+    this._errors = Array.from(this._formElement.querySelectorAll('.form__input-error'));
+    this._inputs = Array.from(this._formElement.querySelectorAll('.form__input'));
   }
 
   _showInputError(inputElement) {
@@ -41,26 +45,21 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    const submitButton = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
-    const inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
+    
 
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(submitButton, inputList);
+        this._toggleButtonState(this._submitButton, this._inputList);
       });
     });
   }
 
-  _cleanValidationMessage() {
-    const errors = Array.from(this._formElement.querySelectorAll('.form__input-error'));
-    const inputs = Array.from(this._formElement.querySelectorAll('.form__input'));
-
-    errors.forEach((error) => {
+  cleanValidationMessage() {
+    this._errors.forEach((error) => {
       error.textContent = '';
     });
-
-    inputs.forEach((input) => {
+    this._inputs.forEach((input) => {
       input.classList.remove(this._validationConfig.inputErrorClass);
     });
   }
@@ -69,10 +68,7 @@ export default class FormValidator {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-
     this._setEventListeners();
-    const submitButton = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
-    const inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
-    this._toggleButtonState(submitButton, inputList);
+    this._toggleButtonState(this._submitButton, this._inputList);
   }
 }

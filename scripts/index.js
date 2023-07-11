@@ -14,8 +14,15 @@ const profileAbout = document.querySelector('.profile__workplace');
 const buttonsClosePopup = document.querySelectorAll('.popup__close');
 const popups = document.querySelectorAll('.popup');
 const popupPhoto = document.querySelector('.popup_photo');
-const templateElements = document.querySelector('#template').content;
+const templateSelector = '#template'
 const cards = document.querySelector('.cards');
+const title = formElementAdd.querySelector('.form__input_value_title');
+const link = formElementAdd.querySelector('.form__input_value_link');
+
+
+
+const popupImage = document.querySelector('.popup__photo-images');
+const popupCaption = document.querySelector('.popup__photo-title');
 
 const validationConfig = {
   formSelector: '.form',
@@ -25,6 +32,32 @@ const validationConfig = {
   inputErrorClass: 'form__input_error-text',
   errorClass: 'form__input-error',
 };
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
@@ -53,7 +86,7 @@ const preloadEditPopup = () => {
 
 preloadEditPopup();
 
-function openPopup(popup) {
+const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc);
 }
@@ -80,7 +113,7 @@ const imageAddValidator = new FormValidator(validationConfig, formElementAdd);
 imageAddValidator.enableValidation();
 
 const createCard = (data) => {
-  const card = new Card(data);
+  const card = new Card(data, templateSelector, openPopup);
   return card.createCard();
   
 };
@@ -90,11 +123,9 @@ initialCards.forEach((item) => {
 });
 const handleFormSubmitAdd = (evt) => {
   evt.preventDefault();
-  const title = formElementAdd.querySelector('.form__input_value_title').value;
-  const link = formElementAdd.querySelector('.form__input_value_link').value;
   const newCardData = {
-    name: title,
-    link: link
+    name: title.value,
+    link: link.value
   };
   const newCard = createCard(newCardData);
   cards.prepend(newCard);
@@ -106,13 +137,15 @@ formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 
 buttonOpenEditPopup.addEventListener('click', () => {
-    profileValidator._cleanValidationMessage();
+    profileValidator.cleanValidationMessage();
     preloadEditPopup();
     openPopup(popupEdit);
   });
   
   buttonOpenAddPopup.addEventListener('click', () => {
-    imageAddValidator._cleanValidationMessage();
+    imageAddValidator.cleanValidationMessage();
+    imageAddValidator.enableValidation();
     openPopup(popupAdd);
     formElementAdd.reset();
   });
+ 
