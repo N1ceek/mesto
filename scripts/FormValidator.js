@@ -4,8 +4,6 @@ export default class FormValidator {
     this._formElement = formElement;
     this._submitButton = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
     this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
-    this._errors = Array.from(this._formElement.querySelectorAll('.form__input-error'));
-    this._inputs = Array.from(this._formElement.querySelectorAll('.form__input'));
   }
 
   _showInputError(inputElement) {
@@ -54,13 +52,16 @@ export default class FormValidator {
       });
     });
   }
-
-  cleanValidationMessage() {
-    this._errors.forEach((error) => {
-      error.textContent = '';
+  resetValidation() {
+    this._toggleButtonState(this._submitButton, this._inputList);
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
     });
-    this._inputs.forEach((input) => {
-      input.classList.remove(this._validationConfig.inputErrorClass);
+
+  }
+  cleanValidationMessage() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
     });
   }
 

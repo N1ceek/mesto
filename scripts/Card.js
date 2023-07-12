@@ -23,7 +23,6 @@ export default class Card {
         this._cardTitle.textContent = this._name;
         this._cardImage.src = this._link;
         this._cardImage.alt = this._name;
-        popupCaption.textContent = this._name;
         this._buttonRemove = this._cardElement.querySelector('.card__remove');
         this._buttonLike = this._cardElement.querySelector('.card__like');
         this._setEventListeners();
@@ -40,7 +39,6 @@ export default class Card {
         popupImage.src = this._link;
         popupImage.alt = this._name;
         popupCaption.textContent = this._cardTitle.textContent;
-        popupPhoto.classList.add('popup_opened');
         this._openPopup(popupPhoto);
     }
     _setEventListeners() {

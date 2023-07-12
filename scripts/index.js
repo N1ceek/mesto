@@ -7,8 +7,8 @@ const buttonOpenEditPopup = document.querySelector('.profile__edit-button');
 const buttonOpenAddPopup = document.querySelector('.profile__add-button');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
-const nameInput = document.querySelector('.form__input_value_name');
-const aboutInput = document.querySelector('.form__input_value_about');
+const nameInput = formElementEdit.querySelector('.form__input_value_name');
+const aboutInput = formElementEdit.querySelector('.form__input_value_about');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__workplace');
 const buttonsClosePopup = document.querySelectorAll('.popup__close');
@@ -16,14 +16,8 @@ const popups = document.querySelectorAll('.popup');
 const popupPhoto = document.querySelector('.popup_photo');
 const templateSelector = '#template'
 const cards = document.querySelector('.cards');
-const title = formElementAdd.querySelector('.form__input_value_title');
-const link = formElementAdd.querySelector('.form__input_value_link');
-
-
-
-const popupImage = document.querySelector('.popup__photo-images');
-const popupCaption = document.querySelector('.popup__photo-title');
-
+const title = document.querySelector('.form__input_value_title');
+const link = document.querySelector('.form__input_value_link');
 const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',
@@ -32,6 +26,27 @@ const validationConfig = {
   inputErrorClass: 'form__input_error-text',
   errorClass: 'form__input-error',
 };
+
+const formValidators = {}
+// Включение валидации
+const enableValidation = (validationConfig) => {
+  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(validationConfig, formElement)
+// получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute('name')
+   // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+
+
+const popupImage = document.querySelector('.popup__photo-images');
+const popupCaption = document.querySelector('.popup__photo-title');
+
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -105,13 +120,6 @@ buttonsClosePopup.forEach((btn) => {
     closePopup(popup);
   });
 });
-
-const profileValidator = new FormValidator(validationConfig, formElementEdit);
-profileValidator.enableValidation();
-
-const imageAddValidator = new FormValidator(validationConfig, formElementAdd);
-imageAddValidator.enableValidation();
-
 const createCard = (data) => {
   const card = new Card(data, templateSelector, openPopup);
   return card.createCard();
@@ -137,15 +145,21 @@ formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
 
 buttonOpenEditPopup.addEventListener('click', () => {
-    profileValidator.cleanValidationMessage();
+    formValidators['edit-profile'].resetValidation()
+    formValidators['edit-profile'].cleanValidationMessage();
     preloadEditPopup();
     openPopup(popupEdit);
-  });
   
-  buttonOpenAddPopup.addEventListener('click', () => {
-    imageAddValidator.cleanValidationMessage();
-    imageAddValidator.enableValidation();
-    openPopup(popupAdd);
-    formElementAdd.reset();
   });
- 
+function cleanText() {
+  title.textContent = '';
+  link.textContent = '';
+}
+  buttonOpenAddPopup.addEventListener('click', () => {
+
+    formValidators['add-profile'].resetValidation()
+    // formValidators['add-profile'].cleanValidationMessage();
+    formElementAdd.reset(); 
+    openPopup(popupAdd);
+  });
+  enableValidation(validationConfig);
