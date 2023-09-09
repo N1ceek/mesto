@@ -1,0 +1,1000 @@
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/vendor/normalize.css ***!
+  \******************************************************************************/
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+ html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+ ========================================================================== */
+
+/**
+* Remove the margin in all browsers.
+*/
+
+body {
+  margin: 0;
+}
+
+/**
+* Render the `main` element consistently in IE.
+*/
+
+main {
+  display: block;
+}
+
+/**
+* Correct the font size and margin on `h1` elements within `section` and
+* `article` contexts in Chrome, Firefox, and Safari.
+*/
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+ ========================================================================== */
+
+/**
+* 1. Add the correct box sizing in Firefox.
+* 2. Show the overflow in Edge and IE.
+*/
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+* 1. Correct the inheritance and scaling of font size in all browsers.
+* 2. Correct the odd `em` font sizing in all browsers.
+*/
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+ ========================================================================== */
+
+/**
+* Remove the gray background on active links in IE 10.
+*/
+
+a {
+  background-color: transparent;
+}
+
+/**
+* 1. Remove the bottom border in Chrome 57-
+* 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+*/
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+* Add the correct font weight in Chrome, Edge, and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+* 1. Correct the inheritance and scaling of font size in all browsers.
+* 2. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+* Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/**
+* Prevent `sub` and `sup` elements from affecting the line height in
+* all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+ ========================================================================== */
+
+/**
+* Remove the border on images inside links in IE 10.
+*/
+
+img {
+  border-style: none;
+}
+
+/* Forms
+ ========================================================================== */
+
+/**
+* 1. Change the font styles in all browsers.
+* 2. Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+* Show the overflow in IE.
+* 1. Show the overflow in Edge.
+*/
+
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+* Remove the inheritance of text transform in Edge, Firefox, and IE.
+* 1. Remove the inheritance of text transform in Firefox.
+*/
+
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+* Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+* Remove the inner border and padding in Firefox.
+*/
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+* Restore the focus styles unset by the previous rule.
+*/
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+* Correct the padding in Firefox.
+*/
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+* 1. Correct the text wrapping in Edge and IE.
+* 2. Correct the color inheritance from `fieldset` elements in IE.
+* 3. Remove the padding so developers are not caught out when they zero out
+*    `fieldset` elements in all browsers.
+*/
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+* Add the correct vertical alignment in Chrome, Firefox, and Opera.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+* Remove the default vertical scrollbar in IE 10+.
+*/
+
+textarea {
+  overflow: auto;
+}
+
+/**
+* 1. Add the correct box sizing in IE 10.
+* 2. Remove the padding in IE 10.
+*/
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+* Correct the cursor style of increment and decrement buttons in Chrome.
+*/
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+* 1. Correct the odd appearance in Chrome and Safari.
+* 2. Correct the outline style in Safari.
+*/
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+* Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+* 1. Correct the inability to style clickable types in iOS and Safari.
+* 2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+ ========================================================================== */
+
+/*
+* Add the correct display in Edge, IE 10+, and Firefox.
+*/
+
+details {
+  display: block;
+}
+
+/*
+* Add the correct display in all browsers.
+*/
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+ ========================================================================== */
+
+/**
+* Add the correct display in IE 10+.
+*/
+
+template {
+  display: none;
+}
+
+/**
+* Add the correct display in IE 10.
+*/
+
+[hidden] {
+  display: none;
+}
+
+/*!**************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/vendor/fonts.css ***!
+  \**************************************************************************/
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/Inter-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/Inter-Medium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(fonts/Inter-Black.ttf) format("truetype");
+}
+
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/body/body.css ***!
+  \******************************************************************************/
+.body {
+	background-color: black;
+	max-width: 1280px;
+	margin: 0 auto 0;
+}
+ @media screen and (max-width:1279px){
+	.body {
+		min-width: 320px;
+	}
+}
+/*!**********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/header/header.css ***!
+  \**********************************************************************************/
+.header {
+	width: 880px;
+	margin: 45px auto 40px;
+	border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+	padding: 0;
+}
+@media screen and (max-width:1279px){
+	.header {
+		width: 320px;
+		margin: 28px auto 42px;
+	}
+}
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/header/__logo/header__logo.css ***!
+  \***********************************************************************************************/
+.header__logo {
+	background-image:url(images/__logo.svg);
+	width: 142px;
+	height: 33px;
+	margin: 0 0 41px 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+@media screen and (max-width:1279px){
+	.header__logo {
+		width: 103.74px;
+		height: 24.4px;
+		margin: 0 0 32px 27px;
+	}
+}
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/content/content.css ***!
+  \************************************************************************************/
+.content {
+	width: 880px;
+	margin:0 auto 0;
+}
+@media screen and (max-width:1279px){
+	.content {
+		width: 320px;
+	}
+}
+/*!************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/profile.css ***!
+  \************************************************************************************/
+.profile {
+	display: flex;
+	align-items: center;
+}
+@media screen and (max-width:1279px){
+	.profile {
+		flex-direction: column;
+	}
+}
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__add-button/profile__add-button.css ***!
+  \*************************************************************************************************************/
+.profile__add-button {
+	box-sizing: border-box;
+	width: 150px;
+	height: 50px;
+	border: 2px solid #FFF;
+	border-radius: 2px;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(images/__plus.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 22px;
+	align-self: center;
+	margin: 0  0 0 auto;
+	padding: 0;
+	cursor: pointer;
+}
+ .profile__add-button:hover {
+	opacity: .6;
+}
+@media screen and (max-width:1279px){
+	.profile__add-button {
+		width: 282px;
+		margin: 0;
+		background-size: 16px;
+	}
+}
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__avatar/profile__avatar.css ***!
+  \*****************************************************************************************************/
+.profile__avatar {
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+/*!***************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__edit-button/profile__edit-button.css ***!
+  \***************************************************************************************************************/
+.profile__edit-button {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	box-sizing: border-box;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #FFF;
+	background-image: url(images/__pen%D1%81il.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0;
+	padding: 0;
+	background-color: rgba(0, 0, 0, 0);
+	cursor: pointer;
+}
+ .profile__edit-button:hover {
+	opacity: .6;
+}
+@media screen and (max-width:1279px){
+	.profile__edit-button {
+		width: 18px;
+		height: 18px;
+	}
+}
+/*!*************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__info/profile__info.css ***!
+  \*************************************************************************************************/
+.profile__info {
+	margin: 0 0 0 30px;
+	align-self: center;
+	display: grid;
+	grid-template-columns: 300px 24px;
+	grid-column-gap: 18px;
+	grid-row-gap: 16px;
+}
+@media screen and (max-width:1279px){
+	.profile__info {
+		margin: 26px 0 35px 24px;
+		grid-template-columns: 1fr 18px;
+		grid-column-gap: 14px;
+		grid-row-gap: 6px;
+		justify-items: center;
+	}
+}
+/*!*************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__name/profile__name.css ***!
+  \*************************************************************************************************/
+.profile__name {
+	font-family: Inter, Arial, sans-serif;
+	color: #fff;
+	font-size: 42px;
+	line-height: 48px;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 300px;
+}
+@media screen and (max-width:1279px){
+	.profile__name {
+		font-size: 27px;
+		align-self: center;
+		line-height: 33px;
+		max-width: 200px;
+	}
+}
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/profile/__workplace/profile__workplace.css ***!
+  \***********************************************************************************************************/
+.profile__workplace{
+	font-family: Inter, Arial, sans-serif;
+	color: #fff;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	max-width: 300px;
+}
+@media screen and (max-width:1279px){
+	.profile__workplace{
+		font-size: 14px;
+		line-height: 17px;
+		max-width: 200px;
+	}
+}
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/card.css ***!
+  \******************************************************************************/
+.card {
+	position: relative;
+	background-color: #fff;
+	border-radius: 10px;
+	width: 282px;
+	overflow: hidden;
+}
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__image/card__image.css ***!
+  \*********************************************************************************************/
+.card__image {
+	width: 282px;
+	height: 282px;
+	object-fit: cover;
+}
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__item/card__item.css ***!
+  \*******************************************************************************************/
+.card__item {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	max-width: 246px;
+	margin: 25px auto 30px;
+}
+@media screen and (max-width:1279px){
+	.card__item {
+		margin: 22px auto 25px;
+	}
+}
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__like/card__like.css ***!
+  \*******************************************************************************************/
+.card__like {
+	background-color: rgba(0, 0, 0, 0);
+	height: 19px;
+	width: 22px;
+	cursor: pointer;
+	background-image: url(images/__like.svg);
+	border: none;
+	padding: 0;
+}
+ .card__like:hover {
+	opacity: .5;
+}
+/*!*******************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__name/card__name.css ***!
+  \*******************************************************************************************/
+.card__name {
+	font-family: Inter, Arial, sans-serif;
+	color: #000;
+	font-weight: 900;
+	font-size:24px;
+	line-height: 29px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 200px;
+	margin: 0px;
+}
+/*!**********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/footer/footer.css ***!
+  \**********************************************************************************/
+.footer {
+	font-family: Inter, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 22px;
+	margin: 66px auto 60px;
+	width: 880px;
+	display: flex;
+	flex-direction: row;
+}
+@media screen and (max-width:1279px){
+	.footer {
+		font-size: 14px;
+		margin: 48px auto 36px;
+		width: 282px;
+		line-height: 17px;
+	}
+}
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/footer/__copyright/footer__copyright.css ***!
+  \*********************************************************************************************************/
+.footer__copyright {
+	color: #545454;
+	margin: 0;
+	padding: 0;
+}
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/cards/cards.css ***!
+  \********************************************************************************/
+.cards{
+	display: grid;
+	max-width: 880px;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(auto-fit, 1fr);
+	gap: 17px;
+	margin: 50px 0 0 0;
+}
+@media screen and (max-width:1279px){
+	.cards{
+		grid-template-columns: repeat(1, 1fr);
+		gap: 20px;
+		margin: 36px 0 0 0;
+		justify-items: center;
+	}
+}
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/popup.css ***!
+  \********************************************************************************/
+.popup {
+	background-color: rgba(0, 0, 0, .5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+	margin: auto;
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	transition: opacity .3s, visibility 0s linear;
+}
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__close/popup__close.css ***!
+  \***********************************************************************************************/
+.popup__close {
+	border: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: -39px;
+	right: -40px;
+	color: #fff;
+	width: 32px;
+	height: 32px;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(images/CloseIcon.svg);
+	background-size: cover;
+}
+@media screen and (max-width:1279px){
+	.popup__close {
+		top: -36px;
+		right: 0;
+		width: 20px;
+		height: 20px;
+	}
+}
+ .popup__close:hover {
+	opacity: .6;
+	cursor: pointer;
+}
+/*!*******************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__container/popup__container.css ***!
+  \*******************************************************************************************************/
+.popup__container {
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+	padding: 34px 36px 37px 36px;
+	width: 430px;
+	height: 330px;
+	color: #000;
+	background-color: #fff;
+	border-radius: 10px;
+	box-sizing: border-box;
+	position: relative;
+}
+@media screen and (max-width:1279px){
+	.popup__container {
+		padding: 25px 22px 25px 22px;
+		width: 282px;
+	}
+} 
+
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/_opened/popup_opened.css ***!
+  \***********************************************************************************************/
+.popup_opened{
+	visibility: visible;
+	opacity: 1;
+}
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__title/popup__title.css ***!
+  \***********************************************************************************************/
+.popup__title {
+	margin: 0 0 54px 0;
+	padding: 0;
+	height: 25px;
+	font-family: Inter, Arial, sans-serif;
+	color: #000;
+	font-weight: 900;
+	font-size:24px;
+	line-height: 29px;
+	justify-self: start;
+}
+@media screen and (max-width:1279px){
+	.popup__title {
+		margin: 0 0 45px 0;
+		font-size:18px;
+		line-height: 22px;
+	}
+}
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/form.css ***!
+  \******************************************************************************/
+.form {
+	width: 358px;
+	height: 260px;
+	display: flex;
+	flex-direction: column;
+  }
+  @media screen and (max-width: 1279px) {
+	.form {
+	  width: 238px;
+	}
+  }
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__field/form__field.css ***!
+  \*********************************************************************************************/
+.form__field {
+	border: none;
+}
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__input/form__input.css ***!
+  \*********************************************************************************************/
+.form__input {
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	width: 358px;
+	padding: 0 0 7px 0;
+	font-family: Inter, Arial, sans-serif;
+	font-weight: normal;
+	font-size:14px;
+	line-height: 17px;
+}
+@media screen and (max-width:1279px){
+	.form__input {
+		width: 238px;
+	}
+}
+/*!*********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__save-button/form__save-button.css ***!
+  \*********************************************************************************************************/
+.form__save-button {
+	margin: 10px 0 0 0;
+	padding: 0;
+	color:#fff;
+	border-radius: 2px;
+	font-family: Inter, Arial, sans-serif;
+	background-color: #000;
+	font-weight: normal;
+	font-size:18px;
+	line-height: 22px;
+	height: 50px;
+	width: 358px;
+	border: 0;
+}
+ .form__save-button:hover {
+	opacity: .8;
+	cursor: pointer;
+}
+@media screen and (max-width:1279px){
+	.form__save-button {
+		margin:24px 0 0 0;
+		font-size:14px;
+		height:46px;
+		width: 238px;
+	}
+}
+/*!*****************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__set/form__set.css ***!
+  \*****************************************************************************************/
+.form__set {
+	border: none;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+}
+/*!****************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__like/_activeted/card__like_activeted.css ***!
+  \****************************************************************************************************************/
+.card__like_activeted {
+	height: 19px;
+	width: 22px;
+	cursor: pointer;
+	background-image: url(images/like_activeted.svg);
+	border: none;
+	padding: 0;
+}
+ .card__like_activeted:hover {
+	opacity: .5;
+}
+/*!***********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/card/__remove/card__remove.css ***!
+  \***********************************************************************************************/
+.card__remove {
+    position: absolute;
+	background-color: rgba(0, 0, 0, 0);
+	height: 19px;
+	width: 18px;
+	cursor: pointer;
+	background-image: url(images/remove.png);
+	border: none;
+	padding: 0;
+    background-repeat: no-repeat;
+    right: 20px;
+    top: 20px;
+}
+ .card__remove:hover {
+	opacity: .5;
+}
+/*!*************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__photo-images/popup__photo-images.css ***!
+  \*************************************************************************************************************/
+.popup__photo-images {
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+}
+/*!***********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__photo-title/popup__photo-title.css ***!
+  \***********************************************************************************************************/
+.popup__photo-title {
+    font-family: Inter, Arial, sans-serif;
+	color: #fff;
+	margin: 10px 0 0 0;
+	font-size: 12px;
+	line-height: 15px;
+	font-weight: 500;
+	align-self: flex-start;
+}
+/*!*********************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/__full/popup__full.css ***!
+  \*********************************************************************************************/
+.popup__full {
+	max-width: 75vh;
+	max-height: 75vh;
+	border-radius: 10px;
+	box-sizing: border-box;
+	position: relative;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__input/_error-text/form__input_error-text.css ***!
+  \********************************************************************************************************************/
+.form__input_error-text{
+  border-color: #f00;
+}
+
+/*!****************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__save-button/_disabled/form__save-button_disabled.css ***!
+  \****************************************************************************************************************************/
+.form__save-button_disabled {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #000;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+  
+  .form__save-button_disabled:hover {
+    opacity: 0.2;
+  }
+/*!**********************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/form/__input/_error/form__input-error.css ***!
+  \**********************************************************************************************************/
+.form__input-error {
+    font-family: Inter, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f00;
+    min-height: 30px;
+    width: 358px;
+    }
+@media screen and (max-width:1279px){
+    .form__input-error {
+            width: 238px;
+    }
+}
+/*!**************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./mesto/blocks/popup/popup_photo.css ***!
+  \**************************************************************************************/
+.popup_photo {
+	background-color: rgba(0, 0, 0, .9);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	width: 100%;
+	z-index: 2;
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	transition: opacity .3s, visibility 0s linear;
+}
+/*!*****************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./mesto/src/index.css ***!
+  \*****************************************************************************************************************/
+
