@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'development',
-  entry: './mesto/src/index.js',
+  entry: './scripts/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './mesto/src/index.html', 
+      template: './index.html', 
       minify: {
         collapseWhitespace: true,
       },
