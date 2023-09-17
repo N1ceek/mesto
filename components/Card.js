@@ -23,7 +23,6 @@ export default class Card {
         this._buttonRemove = this._cardElement.querySelector('.card__remove');
         this._buttonLike = this._cardElement.querySelector('.card__like');
         this._setEventListeners();
-        console.log('11111')
         return this._cardElement;
     }
     _handleCardRemove() {
