@@ -5,7 +5,26 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
-import InitialCards from '../components/constants.js'
+// import InitialCards from '../components/constants.js'
+import Api from '../components/Api.js'
+
+const optionsApi = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-75', 
+  headers: {
+    authorization: 'c93266f4-3810-4ed9-b9a5-2b3716bdbb15',
+    'Content-Type': "application/json"
+  }
+}
+const api = new Api(optionsApi)
+api.getUserInfo()
+.then((profile) => {
+  userInfo.setUserInfo(profile)
+})
+api.getCards()
+.then((cards) => {
+  const section = new Section({items:cards ,renderer:createCard}, '.cards')
+  section.renderItems();
+})
 
 const formElementEdit = document.querySelector('.form_type_edit');
 const formElementAdd = document.querySelector('.form_type_add');
@@ -35,6 +54,8 @@ const enableValidation = (validationConfig) => {
 };
 const handleFormSubmitEdit = (profile) => {
   userInfo.setUserInfo(profile)
+  console.log(profile)
+  api.sendUserInfo(profile)
   popupWithFormEdit.close();
 
 };
@@ -48,8 +69,35 @@ const handleFormSubmitAdd = (card) => {
   formElementAdd.reset();
   popupWithFormAdd.close()
 };
+const handleLikesCard = (id) => {
+  api.addCardLike(id)
+  .then((res) => {
+    card.updateCardLike(res);
+    card.renderCardLike();
+  })
+  .catch((error) => { console.log(`При лайке карточки возникла ошибка, ${error}`) })
+}
+const handleDeleteLike = (id) => {
+  api.deleteCardLike(id)
+  .then((res) => {
+    card.updateCardLike(res);
+    card.renderCardLike();
+  })
+  .catch((error) => { console.log(`При дизлайке карточки возникла ошибка, ${error}`) })
+}
+const handleDelete = (id) => {
+  popupDelete.open();
+  popupDelete.addSubmitHandler(() => {
+    api.deleteCard(data._id)
+    .then(() => {
+      card._remove();
+      popupDelete.close();
+    })
+    .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
+  });
+}
 const createCard = (data) => {
-  const card = new Card(data, templateSelector, handleImageOpen);
+  const card = new Card(data, templateSelector, userId, handleOpenImage, handleDelete, handleLikesCard, handleDeleteLike);
   return card.createCard();
 };
 const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
@@ -57,12 +105,12 @@ const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAd
 const popupWithImage = new PopupWithImage('.popup_photo')
 popupWithImage.setEventListeners();
 const userInfo = new UserInfo('.profile__name', '.profile__workplace')
-const section = new Section({items:InitialCards,renderer:createCard}, '.cards')
 
-const handleImageOpen = (link, name) => {
+
+const handleOpenImage = (link, name) => {
  popupWithImage.open(link, name);
 };
-section.renderItems();
+
 buttonOpenEditPopup.addEventListener('click', () => {
   popupWithFormEdit.open()
   const profile = userInfo.getUserInfo()
