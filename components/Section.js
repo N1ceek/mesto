@@ -8,7 +8,6 @@ export default class Section {
       this._items.forEach(item => {
         this.addItem(this._renderer(item))
       });
-      console.log(this._items, '123')
     }
     addItem(element) {
       this._container.append(element);

@@ -56,13 +56,13 @@ export default class Api {
     }
 
     // Метод отправки данных пользователя на сервер
-    sendUserInfo(userData) {
+    sendUserInfo(profile) {
         return this._sendRequest(`${this._url}/users/me`, {
           headers: this._headers,
           method: 'PATCH',
           body: JSON.stringify({ 
-            name: userData.name, 
-            about: userData.about
+            name: profile.name, 
+            about: profile.about
           })
         });
     }
