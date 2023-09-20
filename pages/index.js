@@ -6,6 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api.js'
+import PopupDelete from '../components/PopupDelete.js'
 const formElementEdit = document.querySelector('.form_type_edit');
 const formElementAdd = document.querySelector('.form_type_add');
 const buttonOpenEditPopup = document.querySelector('.profile__edit-button');
@@ -39,7 +40,12 @@ const optionsApi = {
     'Content-Type': "application/json"
   }
 }
-
+const cardList = new Section ({
+  renderer: (data) => {
+    const card = createCard(data);
+    cardList.addItem(card)
+  },
+},'.cards') 
 const handleFormSubmitEdit = (profile) => {
   userInfo.setUserInfo(profile)
   api.sendUserInfo(profile)
@@ -58,10 +64,11 @@ const handleFormSubmitAdd = (card) => {
 };
 
 
-const handleOpenImage = (name, link) => {
+function handleCardClick(name, link) {
   popupWithImage.open(name, link);
- };
+}
 let userId;
+const popupDelete = new PopupDelete('.popup_delete');
 const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
 const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAdd)
 const popupWithImage = new PopupWithImage('.popup_photo')
@@ -97,7 +104,7 @@ const createCard = (data) => {
       .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
     });
   }
-  const card = new Card(data, templateSelector, userId, handleOpenImage, handleDelete, handleLikesCard, handleDeleteLike);
+  const card = new Card(data, templateSelector, userId, handleCardClick, handleDelete, handleLikesCard, handleDeleteLike);
   return card.createCard();
 };
 
@@ -105,18 +112,13 @@ api.getUserInfo()
 .then((profile) => {
   userInfo.setUserInfo(profile)
 })
-api.getCards()
-.then((cards) => {
-  const section = new Section({items:cards ,renderer:createCard}, '.cards')
-  section.renderItems();
-  console.log(cards)
-})
+
 
 api.getAllNeededData()
   .then(( [cards, profile] ) => {
     userInfo.setUserInfo(profile);
     userId = profile._id;
-    section.renderItems(cards);
+    cardList.renderItems(cards);
   })
   .catch((error) => console.log(error))
 

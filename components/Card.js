@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(data, templateSelector, userId, handleOpenImage, handleDelete, handleLikesCard, handleCardDeleteLike) {
+    constructor(data, templateSelector, userId, handleCardClick, handleDelete, handleLikesCard, handleCardDeleteLike) {
         this._data = data;
         this._templateSelector = templateSelector;
         this._userId = userId;
-        this._handleOpenImage = handleOpenImage;
+        this._handleOpenImage = handleCardClick;
         this._handleDelete = handleDelete;
         this._handleLikesCard = handleLikesCard;
         this._handleCardDeleteLike = handleCardDeleteLike;
@@ -62,7 +62,7 @@ export default class Card {
     
         /*Слушатель нажатия на изображение */
         this._cardImage.addEventListener('click', () => {
-          this._handleOpenImage(this._name, this._link);
+          this._handleCardClick(this._name, this._link);
           
         });
      }
