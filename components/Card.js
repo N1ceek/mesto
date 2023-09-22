@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(data, templateSelector, userId, handleImageOpen, Likes, Dislike) {
+  constructor(data, templateSelector, userId, handleImageOpen, Likes, Dislike, Delete) {
     this._data = data;
     this._name = data.name;
     this._link = data.link;
@@ -7,6 +7,7 @@ export default class Card {
     this._handleOpenImage = handleImageOpen;
     this._handleCardDeleteLike = Dislike;
     this._handleLikesCard = Likes;
+    this._handleCardRemove = Delete;
     this._likes = this._data.likes || []; // Исправление 1: Обработка отсутствия лайков
     this._userLike = this._likes.find((like) => like._id === userId); // Исправление 7: Исправление _userLike
 
@@ -26,20 +27,19 @@ export default class Card {
 
   updateCardLike(response) {
     this._likes = response.likes;
-    this._userLike = this._likes.find((like) => like._id === this._userId); // Обновление _userLike после обновления лайков
   }
 
   renderCardLike() {
-    this._likeCount.textContent = this._likes.length; // Исправление 3: Исправление опечатки
-    if (this._userLike !== this._userLike) { 
-      this._buttonLike.classList.add('card__like_activeted');
-    } else {
+    this._likeCount.textContent = this._likes.length; // записывает лайки в счетчик
+    if (this._buttonLike.classList.contains('card__like_activeted')) { 
       this._buttonLike.classList.remove('card__like_activeted');
+    } else {
+      this._buttonLike.classList.add('card__like_activeted');
     }
   }
 
   _interactLike() {
-    if (this._userLike === false) {
+    if (this._buttonLike.classList.contains('card__like_activeted')) {
       this._handleCardDeleteLike(this._cardId);
     } else {
       this._handleLikesCard(this._cardId);
@@ -55,7 +55,8 @@ export default class Card {
     this._cardImage.alt = this._name;
     this._buttonRemove = this._cardElement.querySelector('.card__remove');
     this._buttonLike = this._cardElement.querySelector('.card__like');
-    this._likeCount = this._cardElement.querySelector('.card__like-count'); // Добавление этой строки
+    this._likeCount = this._cardElement.querySelector('.card__like-count');
+    this._likeCount.textContent = this._likes.length; // Добавление этой строки
     this._setEventListeners();
     this.renderCardLike(); // Исправление 3: Вызов renderCardLike для правильного отображения лайков
     return this._cardElement;

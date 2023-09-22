@@ -5,8 +5,8 @@ import PopupWithForm from '../components/PopupWithForm.js'
 import PopupWithImage from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
-import InitialCards from '../components/constants.js'
 import Api from '../components/Api';
+import PopupDelete from '../components/PopupDelete.js'
 let userId;
 const formElementEdit = document.querySelector('.form_type_edit');
 const formElementAdd = document.querySelector('.form_type_add');
@@ -70,7 +70,6 @@ const createCard = (data) => {
   const Likes = (id) => {
     api.addCardLike(id)
     .then((res) => {
-      console.log(card)
       card.updateCardLike(res);
       card.renderCardLike();
       
@@ -85,7 +84,18 @@ const createCard = (data) => {
     })
     .catch((error) => { console.log(`При дизлайке карточки возникла ошибка, ${error}`) })
   }
-  const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake);
+  const Delete = (id) => {
+    popupDelete.open();
+    popupDelete.addSubmitHandler(() => {
+      api.deleteCard(data._id)
+      .then(() => {
+        card._remove();
+        popupDelete.close();
+      })
+      .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
+    });
+  }
+  const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake, Delete);
   return card.createCard();
 };
 const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
@@ -93,7 +103,8 @@ const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAd
 const popupWithImage = new PopupWithImage('.popup_photo')
 popupWithImage.setEventListeners();
 const userInfo = new UserInfo('.profile__name', '.profile__workplace')
-// const section = new Section({items:InitialCards,renderer:createCard}, '.cards')
+const popupDelete = new PopupDelete('.popup_delete');
+popupDelete.setEventListeners();
 api.getCards()
 .then((cards) => {
   const section = new Section({items:cards ,renderer:createCard}, '.cards')
@@ -125,4 +136,5 @@ buttonOpenEditPopup.addEventListener('click', () => {
     formValidators['add-profile'].resetValidation()
     formElementAdd.reset(); 
   });
+  
   enableValidation(validationConfig);
