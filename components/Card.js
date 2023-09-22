@@ -12,8 +12,9 @@ export default class Card {
     this._userLike = this._likes.find((like) => like._id === userId); // Исправление 7: Исправление _userLike
 
     this._userId = userId;
-    this._cardId = this._data._id;
-    this._ownerId = this._data.owner._id;
+    this._cardId = data._id;
+    console.log(data._id)
+    // this._ownerId = data.owner._id;
   }
 
   _getTemplate() {

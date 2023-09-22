@@ -10,10 +10,13 @@ import PopupDelete from '../components/PopupDelete.js'
 let userId;
 const formElementEdit = document.querySelector('.form_type_edit');
 const formElementAdd = document.querySelector('.form_type_add');
+const formElementAvatar = document.querySelector('.form_type_avatar')
 const buttonOpenEditPopup = document.querySelector('.profile__edit-button');
 const buttonOpenAddPopup = document.querySelector('.profile__add-button');
+const buttonOpenAvatarPopup = document.querySelector('.profile__avatar_edit')
 const nameInput = formElementEdit.querySelector('.form__input_value_name');
 const aboutInput = formElementEdit.querySelector('.form__input_value_about');
+const avatarInput = formElementAvatar.querySelector('.form__input_value_avatar')
 const templateSelector = '#template'
 const cards = document.querySelector('.cards');
 const validationConfig = {
@@ -47,26 +50,11 @@ const apiOp = {
 
 
 
-const handleFormSubmitEdit = (profile) => {
-  userInfo.setUserInfo(profile)
-  api.sendUserInfo(profile)
-  popupWithFormEdit.close();
 
-};
-const handleFormSubmitAdd = (card) => {
-  const newCardData = {
-    name: card.title,
-    link: card.link
-  };
-  api.createNewCard(newCardData)
-  const newCard = createCard(newCardData);
-  cards.prepend(newCard);
-  formElementAdd.reset();
-  popupWithFormAdd.close()
-};
 
 
 const createCard = (data) => {
+  
   const Likes = (id) => {
     api.addCardLike(id)
     .then((res) => {
@@ -84,10 +72,11 @@ const createCard = (data) => {
     })
     .catch((error) => { console.log(`При дизлайке карточки возникла ошибка, ${error}`) })
   }
+
   const Delete = (id) => {
     popupDelete.open();
     popupDelete.addSubmitHandler(() => {
-      api.deleteCard(data._id)
+      api.deleteCard(id)
       .then(() => {
         card._remove();
         popupDelete.close();
@@ -98,18 +87,44 @@ const createCard = (data) => {
   const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake, Delete);
   return card.createCard();
 };
-const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
-const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAdd)
-const popupWithImage = new PopupWithImage('.popup_photo')
-popupWithImage.setEventListeners();
-const userInfo = new UserInfo('.profile__name', '.profile__workplace')
-const popupDelete = new PopupDelete('.popup_delete');
-popupDelete.setEventListeners();
+const handleFormSubmitEdit = (profile) => {
+  userInfo.setUserInfo(profile)
+  api.sendUserInfo(profile)
+  popupWithFormEdit.close();
+
+};
+const handleFormSubmitAdd = (card) => {
+  const newCardData = {
+    name: card.title,
+    link: card.link
+  };
+  api.createNewCard(newCardData)
+  const newCard = createCard(newCardData);
+  cards.prepend(newCard);
+  formElementAdd.reset();
+  popupWithFormAdd.close()
+};
 api.getCards()
 .then((cards) => {
   const section = new Section({items:cards ,renderer:createCard}, '.cards')
   section.renderItems();
 })
+const popupAvatar = new PopupWithForm('.popup_avatar-edit', handleFormSubmitAvatar)
+const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
+const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAdd)
+const popupWithImage = new PopupWithImage('.popup_photo')
+popupWithImage.setEventListeners();
+const userInfo = new UserInfo('.profile__name', '.profile__workplace', '.profile__avatar')
+const popupDelete = new PopupDelete('.popup_type_delete');
+
+
+
+
+
+
+
+popupDelete.setEventListeners();
+
 
 api.getUserInfo()
 .then((profile) => {
@@ -117,12 +132,16 @@ api.getUserInfo()
 })
 
 
+const handleFormSubmitAvatar = (profile) => {
+  userInfo.setUserInfo(profile)
+  api.sendUserInfo(profile)
+  popupAvatar.close();
 
+};
 
 const handleImageOpen = (name, link) => {
  popupWithImage.open(link, name);
 };
-// section.renderItems();
 buttonOpenEditPopup.addEventListener('click', () => {
   popupWithFormEdit.open()
   const profile = userInfo.getUserInfo()
@@ -138,3 +157,12 @@ buttonOpenEditPopup.addEventListener('click', () => {
   });
   
   enableValidation(validationConfig);
+  
+  buttonOpenAvatarPopup.addEventListener('click', () => {
+    popupAvatar.open()
+    const profile = userInfo.getUserInfo()
+    avatarInput.value = profile.avatar
+    formValidators['popupAvatarForm'].resetValidation()
+  });
+
+  popupAvatar.setEventListeners();
