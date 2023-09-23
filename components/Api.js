@@ -6,16 +6,18 @@ export default class Api {
 
     // Метод обработки ответа сервера
     _sendRequest(url, options) {
-        return fetch(url, options)
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
+      return fetch(url, options)
+          .then((response) => {
+              if (response.ok) {
+                  return response.json();
+              }
+              throw new Error("Ошибка");
+          })
+          .catch((error) => {
+              return { error: error.message }; // Возвращаем объект с информацией об ошибке
+          });
+  }
   
-          throw new Error("Ошибка");
-        })
-    }
-
     // Метод инициализации карточек с сервера
     getCards() {
       return this._sendRequest(`${this._url}/cards`, {
@@ -87,7 +89,7 @@ export default class Api {
           method: 'PATCH',
           headers: this._headers,
           body: JSON.stringify({
-            avatar: data.userAvatar,
+            avatar: data.Avatar,
           })
         })
     }

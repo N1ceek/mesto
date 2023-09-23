@@ -15,10 +15,16 @@ export default class UserInfo {
     setUserInfo(data) {
         if (data.name) this._name.textContent = data.name;
         if (data.about) this._job.textContent = data.about;
-        this.setAvatar(data)  
+        if(data) {
+            this.setAvatar(data);
+          }  
     }
     setAvatar(data) {
-        if (data.avatar) this._avatar.src = data.avatar;
-        if (data.name) this._avatar.alt = data.name;
+        if(data.avatar) {
+            this._avatar.src = data.avatar;
+          }
+        console.log('!!!')
+        console.log(data)
+        console.log('!!!')
     }
 }

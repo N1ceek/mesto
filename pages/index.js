@@ -87,28 +87,51 @@ const createCard = (data) => {
   const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake, Delete);
   return card.createCard();
 };
+
+api.getAllNeededData()
+  .then(( [cards, userData] ) => {
+    userInfo.setUserInfo(userData);
+    userId = userData._id;
+    section.renderItems(cards);
+  })
+  .catch((error) => console.log(error))
+
 const handleFormSubmitEdit = (profile) => {
   userInfo.setUserInfo(profile)
   api.sendUserInfo(profile)
   popupWithFormEdit.close();
-
 };
+
 const handleFormSubmitAdd = (card) => {
   const newCardData = {
     name: card.title,
     link: card.link
   };
+
   api.createNewCard(newCardData)
   const newCard = createCard(newCardData);
   cards.prepend(newCard);
   formElementAdd.reset();
   popupWithFormAdd.close()
 };
+
 api.getCards()
 .then((cards) => {
   const section = new Section({items:cards ,renderer:createCard}, '.cards')
   section.renderItems();
 })
+const handleFormSubmitAvatar = (data) => {
+  api.handleUserAvatar(data)
+   .then((data) => {
+    userInfo.setAvatar(data);
+    formValidators['popupAvatarForm'].resetValidation();
+    formValidators['popupAvatarForm'].cleanValidationMessage();
+    popupAvatar.close();
+  })
+  .catch((error) => console.log(error))
+  .finally(() => popupAvatar.renderLoading(false))
+}
+
 const popupAvatar = new PopupWithForm('.popup_avatar-edit', handleFormSubmitAvatar)
 const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
 const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAdd)
@@ -117,27 +140,12 @@ popupWithImage.setEventListeners();
 const userInfo = new UserInfo('.profile__name', '.profile__workplace', '.profile__avatar')
 const popupDelete = new PopupDelete('.popup_type_delete');
 
-
-
-
-
-
-
-popupDelete.setEventListeners();
-
-
 api.getUserInfo()
 .then((profile) => {
   userInfo.setUserInfo(profile)
 })
 
 
-const handleFormSubmitAvatar = (profile) => {
-  userInfo.setUserInfo(profile)
-  api.sendUserInfo(profile)
-  popupAvatar.close();
-
-};
 
 const handleImageOpen = (name, link) => {
  popupWithImage.open(link, name);
@@ -164,5 +172,5 @@ buttonOpenEditPopup.addEventListener('click', () => {
     avatarInput.value = profile.avatar
     formValidators['popupAvatarForm'].resetValidation()
   });
-
+  popupDelete.setEventListeners();
   popupAvatar.setEventListeners();
