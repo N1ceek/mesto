@@ -1,4 +1,4 @@
-.profile__avatar_edit {
+.profile__avatar-area_edit {
     position: absolute;
     padding: 0;
     left: 0;
@@ -12,8 +12,8 @@
     transition: .5s;
   }
   
-  .profile__avatar_edit:hover {
+  .profile__avatar-area_edit:hover {
       cursor: pointer;
       opacity: 0.8;
-      background: rgba(0, 0, 0, 0.9) url('../../../../images/profile/profile__avatar_edit.svg') no-repeat center;
+      background: rgba(0, 0, 0, 0.9) url('../../../../../images/profile/profile__avatar_edit.svg') no-repeat center;
   }
