@@ -15,5 +15,5 @@
   .profile__avatar-area_edit:hover {
       cursor: pointer;
       opacity: 0.8;
-      background: rgba(0, 0, 0, 0.9) url('../../../../../images/profile/profile__avatar_edit.svg') no-repeat center;
+      background: rgba(0, 0, 0, 0.9) url('../../../../images/profile/profile__avatar_edit.svg') no-repeat center;
   }
