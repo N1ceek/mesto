@@ -23,8 +23,5 @@ export default class UserInfo {
         if(data.avatar) {
             this._avatar.src = data.avatar;
           }
-        console.log('!!!')
-        console.log(data)
-        console.log('!!!')
     }
 }

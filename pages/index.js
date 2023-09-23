@@ -7,6 +7,7 @@ import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api';
 import PopupDelete from '../components/PopupDelete.js'
+
 let userId;
 const formElementEdit = document.querySelector('.form_type_edit');
 const formElementAdd = document.querySelector('.form_type_add');
@@ -28,6 +29,7 @@ const validationConfig = {
   errorClass: 'form__input-error',
 };
 const formValidators = {}
+
 const enableValidation = (validationConfig) => {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector))
   formList.forEach((formElement) => {
@@ -44,23 +46,14 @@ const apiOp = {
     'Content-Type': 'application/json'
   }
 }
-
-  const api = new Api(apiOp);
-
-
-
-
-
-
+const api = new Api(apiOp);
 
 const createCard = (data) => {
-  
   const Likes = (id) => {
     api.addCardLike(id)
     .then((res) => {
       card.updateCardLike(res);
       card.renderCardLike();
-      
     })
     .catch((error) => { console.log(`При лайке карточки возникла ошибка, ${error}`) })
   }
@@ -72,11 +65,10 @@ const createCard = (data) => {
     })
     .catch((error) => { console.log(`При дизлайке карточки возникла ошибка, ${error}`) })
   }
-
   const Delete = (id) => {
     popupDelete.open();
     popupDelete.addSubmitHandler(() => {
-      api.deleteCard(id)
+      api.deleteCard(data._id)
       .then(() => {
         card._remove();
         popupDelete.close();
@@ -84,6 +76,7 @@ const createCard = (data) => {
       .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
     });
   }
+
   const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake, Delete);
   return card.createCard();
 };
@@ -92,7 +85,11 @@ api.getAllNeededData()
   .then(( [cards, userData] ) => {
     userInfo.setUserInfo(userData);
     userId = userData._id;
-    section.renderItems(cards);
+    api.getCards()
+    .then((cards) => {
+      const section = new Section({items:cards ,renderer:createCard}, '.cards');
+      section.renderItems();
+})
   })
   .catch((error) => console.log(error))
 
@@ -105,21 +102,28 @@ const handleFormSubmitEdit = (profile) => {
 const handleFormSubmitAdd = (card) => {
   const newCardData = {
     name: card.title,
-    link: card.link
+    likes: [],
+    link: card.link,
+    owner: {
+      _id: userId
+    }
   };
 
   api.createNewCard(newCardData)
-  const newCard = createCard(newCardData);
-  cards.prepend(newCard);
-  formElementAdd.reset();
-  popupWithFormAdd.close()
+  .then(() => {
+    api.getCards()
+    .then((thiscards) => {
+      var createdCard = thiscards.filter((thiscard) => thiscard.owner._id == userId)[0];
+      newCardData._id = createdCard._id;
+
+      const newCard = createCard(newCardData);
+      cards.prepend(newCard);
+      formElementAdd.reset();
+      popupWithFormAdd.close();
+    })
+  });
 };
 
-api.getCards()
-.then((cards) => {
-  const section = new Section({items:cards ,renderer:createCard}, '.cards')
-  section.renderItems();
-})
 const handleFormSubmitAvatar = (data) => {
   api.handleUserAvatar(data)
    .then((data) => {
@@ -144,8 +148,6 @@ api.getUserInfo()
 .then((profile) => {
   userInfo.setUserInfo(profile)
 })
-
-
 
 const handleImageOpen = (name, link) => {
  popupWithImage.open(link, name);
