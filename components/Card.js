@@ -27,7 +27,6 @@ export default class Card {
   renderCardLike(button) {
     button = button || this._buttonLike;
     this._likeCount.textContent = this._likes.length;
-     // записывает лайки в счетчик
     if (this._likes.find((like) => like._id === this._userId) != null) {
       button.classList.add('card__like_activeted');
     } else {
@@ -41,7 +40,7 @@ export default class Card {
       this._handleLikesCard(this._cardId);
     }
   }
-  _remove() {
+  remove() {
     this._cardElement.remove();
     this._cardElement = null;
   }

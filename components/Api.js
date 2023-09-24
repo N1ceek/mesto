@@ -13,9 +13,6 @@ export default class Api {
               }
               throw new Error("Ошибка");
           })
-          .catch((error) => {
-              return { error: error.message }; // Возвращаем объект с информацией об ошибке
-          });
   }
   
     // Метод инициализации карточек с сервера
@@ -76,7 +73,6 @@ export default class Api {
         });
     }
 
-    // Метод удаления лайка с сервера
     deleteCardLike(id) {
         return this._sendRequest(`${this._url}/cards/${id}/likes`, {
           method: "DELETE",

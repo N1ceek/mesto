@@ -7,28 +7,14 @@ import Section from '../components/Section.js'
 import UserInfo from '../components/UserInfo.js'
 import Api from '../components/Api';
 import PopupDelete from '../components/PopupDelete.js'
-
+import {InitialCards, formElementEdit, formElementAdd,
+  formElementAvatar, buttonOpenEditPopup, buttonOpenAddPopup,
+  buttonOpenAvatarPopup, nameInput, aboutInput, avatarInput,
+  templateSelector, cards} from '../utils/constants.js';
+import {validationConfig} from '../utils/constants.js'
+import {formValidators} from '../utils/constants.js'
 let userId;
-const formElementEdit = document.querySelector('.form_type_edit');
-const formElementAdd = document.querySelector('.form_type_add');
-const formElementAvatar = document.querySelector('.form_type_avatar')
-const buttonOpenEditPopup = document.querySelector('.profile__edit-button');
-const buttonOpenAddPopup = document.querySelector('.profile__add-button');
-const buttonOpenAvatarPopup = document.querySelector('.profile__edit')
-const nameInput = formElementEdit.querySelector('.form__input_value_name');
-const aboutInput = formElementEdit.querySelector('.form__input_value_about');
-const avatarInput = formElementAvatar.querySelector('.form__input_value_avatar')
-const templateSelector = '#template'
-const cards = document.querySelector('.cards');
-const validationConfig = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: '.form__save-button',
-  disabledButtonClass: 'form__save-button_disabled',
-  inputErrorClass: 'form__input_error-text',
-  errorClass: 'form__input-error',
-};
-const formValidators = {}
+
 
 const enableValidation = (validationConfig) => {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector))
@@ -46,6 +32,7 @@ const apiOp = {
     'Content-Type': 'application/json'
   }
 }
+
 const api = new Api(apiOp);
 
 const createCard = (data) => {
@@ -70,7 +57,7 @@ const createCard = (data) => {
     popupDelete.addSubmitHandler(() => {
       api.deleteCard(data._id)
       .then(() => {
-        card._remove();
+        card.remove();
         popupDelete.close();
       })
       .catch((error) => { console.log(`При закрытии карточки возникла ошибка, ${error}`) })
@@ -80,23 +67,25 @@ const createCard = (data) => {
   const card = new Card(data, templateSelector, userId, handleImageOpen, Likes, Dislake, Delete);
   return card.createCard();
 };
-
+const section = new Section({renderer:createCard}, '.cards');
 api.getAllNeededData()
   .then(( [cards, userData] ) => {
     userInfo.setUserInfo(userData);
     userId = userData._id;
-    api.getCards()
-    .then((cards) => {
-      const section = new Section({items:cards ,renderer:createCard}, '.cards');
-      section.renderItems();
-})
+    section.renderItems(cards);
   })
   .catch((error) => console.log(error))
 
 const handleFormSubmitEdit = (profile) => {
-  userInfo.setUserInfo(profile)
+  
   api.sendUserInfo(profile)
-  popupWithFormEdit.close();
+  .then(() =>{
+    userInfo.setUserInfo(profile);
+    popupWithFormEdit.close();
+  })
+  .catch((error) => {
+    return { error: error.message }; // Возвращаем объект с информацией об ошибке
+});
 };
 
 const handleFormSubmitAdd = (card) => {
@@ -117,11 +106,14 @@ const handleFormSubmitAdd = (card) => {
       newCardData._id = createdCard._id;
 
       const newCard = createCard(newCardData);
-      cards.prepend(newCard);
-      formElementAdd.reset();
+      section.addItem(newCard);
       popupWithFormAdd.close();
     })
-  });
+  })
+  .catch((error) => {
+    return { error: error.message }; // Возвращаем объект с информацией об ошибке
+});
+  
 };
 
 const handleFormSubmitAvatar = (data) => {
@@ -140,14 +132,17 @@ const popupAvatar = new PopupWithForm('.popup_avatar-edit', handleFormSubmitAvat
 const popupWithFormEdit = new PopupWithForm('.popup_type_edit', handleFormSubmitEdit)
 const popupWithFormAdd = new PopupWithForm('.popup_type_add', handleFormSubmitAdd)
 const popupWithImage = new PopupWithImage('.popup_photo')
-popupWithImage.setEventListeners();
+
 const userInfo = new UserInfo('.profile__name', '.profile__workplace', '.profile__avatar')
 const popupDelete = new PopupDelete('.popup_type_delete');
 
-api.getUserInfo()
-.then((profile) => {
-  userInfo.setUserInfo(profile)
-})
+// api.getUserInfo()
+// .then((profile) => {
+//   userInfo.setUserInfo(profile)
+// })
+// .catch((error) => {
+//   return { error: error.message }; // Возвращаем объект с информацией об ошибке
+// });
 
 const handleImageOpen = (name, link) => {
  popupWithImage.open(link, name);
@@ -155,15 +150,17 @@ const handleImageOpen = (name, link) => {
 buttonOpenEditPopup.addEventListener('click', () => {
   popupWithFormEdit.open()
   const profile = userInfo.getUserInfo()
-  nameInput.value = profile.fullName
-  aboutInput.value = profile.workplace
+  popupWithFormEdit.setInputValues(profile)
+  // nameInput.value = profile.fullName
+  // aboutInput.value = profile.workplace
   formValidators['edit-profile'].resetValidation()
   formValidators['edit-profile'].cleanValidationMessage();
+
   });
+
   buttonOpenAddPopup.addEventListener('click', () => {
     popupWithFormAdd.open()
     formValidators['add-profile'].resetValidation()
-    formElementAdd.reset(); 
   });
   
   enableValidation(validationConfig);
@@ -174,5 +171,6 @@ buttonOpenEditPopup.addEventListener('click', () => {
     avatarInput.value = profile.avatar
     formValidators['popupAvatarForm'].resetValidation()
   });
+  popupWithImage.setEventListeners();
   popupDelete.setEventListeners();
   popupAvatar.setEventListeners();
