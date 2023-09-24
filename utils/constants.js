@@ -35,6 +35,13 @@ const aboutInput = formElementEdit.querySelector('.form__input_value_about');
 const avatarInput = formElementAvatar.querySelector('.form__input_value_avatar')
 const templateSelector = '#template'
 const cards = document.querySelector('.cards');
+export const apiOp = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-75',
+  headers: {
+    authorization: 'c93266f4-3810-4ed9-b9a5-2b3716bdbb15',
+    'Content-Type': 'application/json'
+  }
+}
 export const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',

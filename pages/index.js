@@ -13,6 +13,7 @@ import {InitialCards, formElementEdit, formElementAdd,
   templateSelector, cards} from '../utils/constants.js';
 import {validationConfig} from '../utils/constants.js'
 import {formValidators} from '../utils/constants.js'
+import {apiOp} from '../utils/constants.js'
 let userId;
 
 
@@ -25,13 +26,7 @@ const enableValidation = (validationConfig) => {
     validator.enableValidation();
   });
 };
-const apiOp = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-75',
-  headers: {
-    authorization: 'c93266f4-3810-4ed9-b9a5-2b3716bdbb15',
-    'Content-Type': 'application/json'
-  }
-}
+
 
 const api = new Api(apiOp);
 
@@ -77,7 +72,7 @@ api.getAllNeededData()
   .catch((error) => console.log(error))
 
 const handleFormSubmitEdit = (profile) => {
-  
+  popupWithFormEdit.renderLoading(true);
   api.sendUserInfo(profile)
   .then(() =>{
     userInfo.setUserInfo(profile);
@@ -85,10 +80,12 @@ const handleFormSubmitEdit = (profile) => {
   })
   .catch((error) => {
     return { error: error.message }; // Возвращаем объект с информацией об ошибке
-});
+})
+  .finally(() => popupWithFormEdit.renderLoading(false))
 };
 
 const handleFormSubmitAdd = (card) => {
+  
   const newCardData = {
     name: card.title,
     likes: [],
@@ -97,26 +94,23 @@ const handleFormSubmitAdd = (card) => {
       _id: userId
     }
   };
-
+  popupWithFormAdd.renderLoading(true)
   api.createNewCard(newCardData)
-  .then(() => {
-    api.getCards()
-    .then((thiscards) => {
-      var createdCard = thiscards.filter((thiscard) => thiscard.owner._id == userId)[0];
+  .then((createdCard) => {
       newCardData._id = createdCard._id;
 
       const newCard = createCard(newCardData);
-      section.addItem(newCard);
+      section.addNewItem(newCard);
       popupWithFormAdd.close();
-    })
   })
   .catch((error) => {
     return { error: error.message }; // Возвращаем объект с информацией об ошибке
-});
-  
+})
+.finally(() => popupWithFormAdd.renderLoading(false));
 };
 
 const handleFormSubmitAvatar = (data) => {
+  popupAvatar.renderLoading(true);
   api.handleUserAvatar(data)
    .then((data) => {
     userInfo.setAvatar(data);
